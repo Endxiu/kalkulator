@@ -1,0 +1,1 @@
+let ButtonNum1 = document.getElementById("BtnNum1");
