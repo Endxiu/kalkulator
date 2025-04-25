@@ -27,11 +27,7 @@ let SolvingArea = document.getElementById("SolvArea");
 
 let i = 0;
 let Stringcalculations = ["","","","","","","","",""];
-let Numbercalculations = [];
-length = Stringcalculations.length;
-let answer;
-
-
+let answer = []
 function ifMathSymbolClicked() {
     if(!Stringcalculations[i] == " "){
         i++;
@@ -39,76 +35,73 @@ function ifMathSymbolClicked() {
 };
 
 function ifEqualSymbolClicked() {
-    for(let i = 0; i <length; i++){
-        Numbercalculations.push(parseInt(Stringcalculations[i]));
-    }
-    console.log(Numbercalculations);
     for(let i = 0; i < 9; i++){
-        if(Stringcalculations[i] == "+"){
-            answer += Numbercalculations[i - 1] + Numbercalculations[i + 1];
-        }
-        if(Stringcalculations[i] == "-"){
-            answer += Numbercalculations[i - 1] - Numbercalculations[i + 1];
-        }
-        if(Stringcalculations[i] == "x"){
-            answer += Numbercalculations[i - 1] * Numbercalculations[i + 1];
-        }
-        if(Stringcalculations[i] == "÷"){
-            answer += Numbercalculations[i - 1] / Numbercalculations[i + 1];
-        }
+        //console.log(eval(Stringcalculations.join("")));
+        i++;
     }
+    answer = eval(Stringcalculations.join(""));
     }
+
+function ifClearSymbolClicked() {
+    Stringcalculations = ["","","","","","","","",""];
+    answer = [];
+    i = 0;
+    SolvingArea.value = "";
+    //console.log(Stringcalculations);
+    //console.log(answer);
+    //console.log(i);
+}
 
 //Showing numbers in TextArea functions
 ButtonNum1.addEventListener("click" , (e) => {
     SolvingArea.value += e.target.innerText;
     Stringcalculations[i] += e.target.innerText;
-    console.log(Numbercalculations);
+    //console.log(Stringcalculations);
     });
 ButtonNum2.addEventListener("click" , (e) => {
     SolvingArea.value += e.target.innerText;
     Stringcalculations[i] += e.target.innerText;
-    console.log(Numbercalculations);
+    //console.log(Stringcalculations);
     });
 ButtonNum3.addEventListener("click" , (e) => {
     SolvingArea.value += e.target.innerText;
     Stringcalculations[i] += e.target.innerText;
-    console.log(Numbercalculations);
+    //console.log(Stringcalculations);
     });
 ButtonNum4.addEventListener("click" , (e) => {
     SolvingArea.value += e.target.innerText;
     Stringcalculations[i] += e.target.innerText;
-    console.log(Numbercalculations);
+    //console.log(Stringcalculations);
     });
 ButtonNum5.addEventListener("click" , (e) => {
     SolvingArea.value += e.target.innerText;
     Stringcalculations[i] += e.target.innerText;
-    console.log(Numbercalculations);
+    //console.log(Stringcalculations);
     });
 ButtonNum6.addEventListener("click" , (e) => {
     SolvingArea.value += e.target.innerText;
     Stringcalculations[i] += e.target.innerText;
-    console.log(Numbercalculations);
+    //console.log(Stringcalculations);
     });
 ButtonNum7.addEventListener("click" , (e) => {
     SolvingArea.value += e.target.innerText;
     Stringcalculations[i] += e.target.innerText;
-    console.log(Numbercalculations);
+    //console.log(Stringcalculations);
     });
 ButtonNum8.addEventListener("click" , (e) => {
     SolvingArea.value += e.target.innerText;
     Stringcalculations[i] += e.target.innerText;
-    console.log(Numbercalculations);
+    //console.log(Stringcalculations);
     });
 ButtonNum9.addEventListener("click" , (e) => {
     SolvingArea.value += e.target.innerText;
     Stringcalculations[i] += e.target.innerText;
-    console.log(Numbercalculations);
+    //console.log(Stringcalculations);
     });
 ButtonNum0.addEventListener("click" , (e) => {
     SolvingArea.value += e.target.innerText;
     Stringcalculations[i] += e.target.innerText;
-    console.log(Numbercalculations);
+    //console.log(Stringcalculations);
     });
 //math symbols in TextArea functions
 ButtonPlus.addEventListener("click" , (e) => {
@@ -126,13 +119,13 @@ ButtonMinus.addEventListener("click" , (e) => {
 ButtonMulti.addEventListener("click" , (e) => {
     SolvingArea.value += " " + e.target.innerText + " ";
     ifMathSymbolClicked();
-    Stringcalculations[i] += e.target.innerText;
+    Stringcalculations[i] += "*";
     ifMathSymbolClicked();
     });
 ButtonDivision.addEventListener("click" , (e) => {
     SolvingArea.value += " " + e.target.innerText + " ";
     ifMathSymbolClicked();
-    Stringcalculations[i] += e.target.innerText;
+    Stringcalculations[i] += "/";
     ifMathSymbolClicked();
     });
 ButtonEqual.addEventListener("click" , (e) => {
@@ -140,3 +133,10 @@ ButtonEqual.addEventListener("click" , (e) => {
     ifEqualSymbolClicked();
     SolvingArea.value += " " + answer;
     });
+ButtonDot.addEventListener("click", (e) => {
+    SolvingArea.value += e.target.innerText;
+    Stringcalculations[i] += e.target.innerText;
+})
+ButtonClear.addEventListener("click", (e) => {
+    ifClearSymbolClicked();
+})
